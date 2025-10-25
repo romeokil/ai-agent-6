@@ -1,0 +1,25 @@
+{
+  "name": "ai-agent-6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^1.27.0",
+    "@langchain/community": "^1.0.0",
+    "@langchain/core": "^1.0.1",
+    "@langchain/google-genai": "^1.0.0",
+    "@langchain/pinecone": "^1.0.0",
+    "@langchain/textsplitters": "^1.0.0",
+    "@pinecone-database/pinecone": "^5.1.2",
+    "dotenv": "^17.2.3",
+    "pdf-parse": "^1.1.1",
+    "readline-sync": "^1.4.10"
+  }
+}

@@ -1,0 +1,13 @@
+# Ignore environment files anywhere in the project
+*.env
+
+# Or more specifically
+backend/.env
+
+# Optional: ignore node_modules globally
+node_modules/
+
+# Optional: ignore build outputs
+dist/
+build/
+.next/
