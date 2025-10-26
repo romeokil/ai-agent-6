@@ -7,11 +7,34 @@ import { GoogleGenAI } from "@google/genai";
 const ai= new GoogleGenAI(process.env.GOOGLE_API_KEY);
 let History=[];
 
+async function transformQuery(question){
+
+History.push({
+    role:'user',
+    parts:[{text:question}]
+    })  
+
+const response = await ai.models.generateContent({
+    model: "gemini-2.0-flash",
+    contents: History,
+    config: {
+      systemInstruction: `You are a query rewriting expert. Based on the provided chat history, rephrase the "Follow Up user Question" into a complete, standalone question that can be understood without the chat history.
+    Only output the rewritten question and nothing else.
+      `,
+    },
+ });
+ 
+ History.pop()
+ 
+ return response.text
+
+}
+
 async function Chatting(question) {
 
     // covert this question into vector
     
-    // const queries = await transformQuery(question);
+    const queries = await transformQuery(question);
 
     const embeddings = new GoogleGenerativeAIEmbeddings({
     apiKey: process.env.GOOGLE_API_KEY,
@@ -44,7 +67,7 @@ const context = searchResults.matches
 
 History.push({
     role:'user',
-    parts:[{text:question}]
+    parts:[{text:queries}]
     })  
 
 
